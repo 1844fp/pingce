@@ -1,0 +1,46 @@
+[
+  {
+    "id": "references",
+    "input": {
+      "operation": "references"
+    },
+    "expected_checks": {
+      "expected_error": true,
+      "no_model": true,
+      "search_count": true
+    }
+  },
+  {
+    "id": "missing_material",
+    "input": {
+      "operation": "missing_material"
+    },
+    "expected_checks": {
+      "expected_error": true,
+      "no_model": true,
+      "search_count": true
+    }
+  },
+  {
+    "id": "resume_parameters_changed",
+    "input": {
+      "operation": "resume_parameters_changed"
+    },
+    "expected_checks": {
+      "expected_error": true,
+      "no_model": true,
+      "search_count": true
+    }
+  },
+  {
+    "id": "resume_input_changed",
+    "input": {
+      "operation": "resume_input_changed"
+    },
+    "expected_checks": {
+      "expected_error": true,
+      "no_model": true,
+      "search_count": true
+    }
+  }
+]

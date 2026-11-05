@@ -1,0 +1,136 @@
+{
+  "name": "研序生命周期真实编排合成依赖v1",
+  "snapshot": "yanxu-lifecycle-v1",
+  "cases": [
+    {
+      "id": "lifecycle-references_empty",
+      "input": {
+        "operation": "references_empty"
+      },
+      "expected": {
+        "scenario": "references_empty",
+        "interrupted": false,
+        "first_error": null,
+        "resume_error": null,
+        "search_calls": 1,
+        "model_calls": 0,
+        "records_count": 0,
+        "run_status": "completed",
+        "stage_status": "needs_review"
+      },
+      "checks": [
+        {
+          "field": "scenario",
+          "equals": "references_empty"
+        },
+        {
+          "field": "interrupted",
+          "equals": false
+        },
+        {
+          "field": "first_error",
+          "equals": null
+        },
+        {
+          "field": "resume_error",
+          "equals": null
+        },
+        {
+          "field": "search_calls",
+          "equals": 1
+        },
+        {
+          "field": "model_calls",
+          "equals": 0
+        },
+        {
+          "field": "records_count",
+          "equals": 0
+        },
+        {
+          "field": "run_status",
+          "equals": "completed"
+        },
+        {
+          "field": "stage_status",
+          "equals": "needs_review"
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic-dependencies",
+        "real-orchestration",
+        "references_empty"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    },
+    {
+      "id": "lifecycle-resume_success",
+      "input": {
+        "operation": "resume_success"
+      },
+      "expected": {
+        "scenario": "resume_success",
+        "interrupted": true,
+        "first_error": "synthetic checkpoint outage",
+        "resume_error": null,
+        "search_calls": 1,
+        "model_calls": 0,
+        "records_count": 1,
+        "run_status": "completed",
+        "stage_status": "needs_review"
+      },
+      "checks": [
+        {
+          "field": "scenario",
+          "equals": "resume_success"
+        },
+        {
+          "field": "interrupted",
+          "equals": true
+        },
+        {
+          "field": "first_error",
+          "equals": "synthetic checkpoint outage"
+        },
+        {
+          "field": "resume_error",
+          "equals": null
+        },
+        {
+          "field": "search_calls",
+          "equals": 1
+        },
+        {
+          "field": "model_calls",
+          "equals": 0
+        },
+        {
+          "field": "records_count",
+          "equals": 1
+        },
+        {
+          "field": "run_status",
+          "equals": "completed"
+        },
+        {
+          "field": "stage_status",
+          "equals": "needs_review"
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic-dependencies",
+        "real-orchestration",
+        "resume_success"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "name": "研序真实编排合成依赖v1",
+  "snapshot": "yanxu-workflow-v1",
+  "cases": [
+    {
+      "id": "workflow-references",
+      "input": {
+        "operation": "references"
+      },
+      "expected": {
+        "scenario": "references",
+        "status": "completed",
+        "error_code": null,
+        "search_calls": 1,
+        "model_calls": 0
+      },
+      "checks": [
+        {
+          "field": "scenario",
+          "equals": "references"
+        },
+        {
+          "field": "status",
+          "equals": "completed"
+        },
+        {
+          "field": "error_code",
+          "equals": null
+        },
+        {
+          "field": "search_calls",
+          "equals": 1
+        },
+        {
+          "field": "model_calls",
+          "equals": 0
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic-dependencies",
+        "real-orchestration",
+        "references"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    },
+    {
+      "id": "workflow-missing_material",
+      "input": {
+        "operation": "missing_material"
+      },
+      "expected": {
+        "scenario": "missing_material",
+        "status": "rejected",
+        "error_code": "workflow.requirements",
+        "search_calls": 0,
+        "model_calls": 0
+      },
+      "checks": [
+        {
+          "field": "scenario",
+          "equals": "missing_material"
+        },
+        {
+          "field": "status",
+          "equals": "rejected"
+        },
+        {
+          "field": "error_code",
+          "equals": "workflow.requirements"
+        },
+        {
+          "field": "search_calls",
+          "equals": 0
+        },
+        {
+          "field": "model_calls",
+          "equals": 0
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic-dependencies",
+        "real-orchestration",
+        "missing_material"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    },
+    {
+      "id": "workflow-resume_parameters_changed",
+      "input": {
+        "operation": "resume_parameters_changed"
+      },
+      "expected": {
+        "scenario": "resume_parameters_changed",
+        "status": "rejected",
+        "error_code": "workflow.parameters_changed",
+        "search_calls": 1,
+        "model_calls": 0
+      },
+      "checks": [
+        {
+          "field": "scenario",
+          "equals": "resume_parameters_changed"
+        },
+        {
+          "field": "status",
+          "equals": "rejected"
+        },
+        {
+          "field": "error_code",
+          "equals": "workflow.parameters_changed"
+        },
+        {
+          "field": "search_calls",
+          "equals": 1
+        },
+        {
+          "field": "model_calls",
+          "equals": 0
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic-dependencies",
+        "real-orchestration",
+        "resume_parameters_changed"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    },
+    {
+      "id": "workflow-resume_input_changed",
+      "input": {
+        "operation": "resume_input_changed"
+      },
+      "expected": {
+        "scenario": "resume_input_changed",
+        "status": "rejected",
+        "error_code": "workflow.input_changed",
+        "search_calls": 1,
+        "model_calls": 0
+      },
+      "checks": [
+        {
+          "field": "scenario",
+          "equals": "resume_input_changed"
+        },
+        {
+          "field": "status",
+          "equals": "rejected"
+        },
+        {
+          "field": "error_code",
+          "equals": "workflow.input_changed"
+        },
+        {
+          "field": "search_calls",
+          "equals": 1
+        },
+        {
+          "field": "model_calls",
+          "equals": 0
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic-dependencies",
+        "real-orchestration",
+        "resume_input_changed"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "name": "研序图谱导航边界v1",
+  "snapshot": "yanxu-knowledge-v1",
+  "cases": [
+    {
+      "id": "knowledge-navigation_trace",
+      "input": {
+        "operation": "navigation_trace"
+      },
+      "expected": {
+        "scenario": "navigation_trace",
+        "edge_count": 1,
+        "review": "unreviewed_navigation",
+        "verification": "navigation_not_fact_verified",
+        "doc_id": "synthetic-doc",
+        "page": 7,
+        "trace_text": "SYNTHETIC ONLY 数据资产 数据治理 合成导航测试内容，不代表真实论文。合成导航测试内容，不代表真实论文。合成导航测试内容，不代表真实论文。合成导航测试内容，不代表真实论文。",
+        "trace_error": null,
+        "fallback": "ordinary_retrieval",
+        "source_unchanged": true
+      },
+      "checks": [
+        {
+          "field": "scenario",
+          "equals": "navigation_trace"
+        },
+        {
+          "field": "edge_count",
+          "equals": 1
+        },
+        {
+          "field": "review",
+          "equals": "unreviewed_navigation"
+        },
+        {
+          "field": "verification",
+          "equals": "navigation_not_fact_verified"
+        },
+        {
+          "field": "doc_id",
+          "equals": "synthetic-doc"
+        },
+        {
+          "field": "page",
+          "equals": 7
+        },
+        {
+          "field": "trace_text",
+          "equals": "SYNTHETIC ONLY 数据资产 数据治理 合成导航测试内容，不代表真实论文。合成导航测试内容，不代表真实论文。合成导航测试内容，不代表真实论文。合成导航测试内容，不代表真实论文。"
+        },
+        {
+          "field": "trace_error",
+          "equals": null
+        },
+        {
+          "field": "fallback",
+          "equals": "ordinary_retrieval"
+        },
+        {
+          "field": "source_unchanged",
+          "equals": true
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic-sqlite",
+        "real-graph",
+        "navigation_trace"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    },
+    {
+      "id": "knowledge-stale_source",
+      "input": {
+        "operation": "stale_source"
+      },
+      "expected": {
+        "scenario": "stale_source",
+        "edge_count": 0,
+        "review": null,
+        "verification": null,
+        "doc_id": null,
+        "page": null,
+        "trace_text": null,
+        "trace_error": "Source changed, deleted or unauthorized; rebuild navigation",
+        "fallback": "ordinary_retrieval",
+        "source_unchanged": false
+      },
+      "checks": [
+        {
+          "field": "scenario",
+          "equals": "stale_source"
+        },
+        {
+          "field": "edge_count",
+          "equals": 0
+        },
+        {
+          "field": "review",
+          "equals": null
+        },
+        {
+          "field": "verification",
+          "equals": null
+        },
+        {
+          "field": "doc_id",
+          "equals": null
+        },
+        {
+          "field": "page",
+          "equals": null
+        },
+        {
+          "field": "trace_text",
+          "equals": null
+        },
+        {
+          "field": "trace_error",
+          "equals": "Source changed, deleted or unauthorized; rebuild navigation"
+        },
+        {
+          "field": "fallback",
+          "equals": "ordinary_retrieval"
+        },
+        {
+          "field": "source_unchanged",
+          "equals": false
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic-sqlite",
+        "real-graph",
+        "stale_source"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    },
+    {
+      "id": "knowledge-empty_lookup",
+      "input": {
+        "operation": "empty_lookup"
+      },
+      "expected": {
+        "scenario": "empty_lookup",
+        "edge_count": 0,
+        "review": null,
+        "verification": null,
+        "doc_id": null,
+        "page": null,
+        "trace_text": null,
+        "trace_error": null,
+        "fallback": "ordinary_retrieval",
+        "source_unchanged": true
+      },
+      "checks": [
+        {
+          "field": "scenario",
+          "equals": "empty_lookup"
+        },
+        {
+          "field": "edge_count",
+          "equals": 0
+        },
+        {
+          "field": "review",
+          "equals": null
+        },
+        {
+          "field": "verification",
+          "equals": null
+        },
+        {
+          "field": "doc_id",
+          "equals": null
+        },
+        {
+          "field": "page",
+          "equals": null
+        },
+        {
+          "field": "trace_text",
+          "equals": null
+        },
+        {
+          "field": "trace_error",
+          "equals": null
+        },
+        {
+          "field": "fallback",
+          "equals": "ordinary_retrieval"
+        },
+        {
+          "field": "source_unchanged",
+          "equals": true
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic-sqlite",
+        "real-graph",
+        "empty_lookup"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,669 @@
+{
+  "name": "研序8项真实离线模块合成验收",
+  "snapshot": "yanxu-module-v1",
+  "cases": [
+    {
+      "id": "real-normal",
+      "input": {
+        "operation": "audit",
+        "payload": {
+          "bundle": {
+            "claims": [
+              {
+                "id": "synthetic-claim",
+                "kind": "literature_result",
+                "locations": [
+                  "p1"
+                ],
+                "evidence": [
+                  {
+                    "sourceId": "synthetic-source",
+                    "version": "v1",
+                    "hash": "synthetic-hash",
+                    "locator": "synthetic:p1",
+                    "quote": "合成原文"
+                  }
+                ]
+              }
+            ],
+            "numbers": []
+          },
+          "currentSources": [
+            {
+              "id": "synthetic-source",
+              "version": "v1",
+              "hash": "synthetic-hash",
+              "authorConfirmed": true
+            }
+          ]
+        },
+        "synthetic": true,
+        "needs_review": true,
+        "provenance": "E:/AI/codex/writing-site/src/writing-evidence.mjs",
+        "risk_tags": [
+          "normal"
+        ]
+      },
+      "expected": {
+        "status": "awaiting_author",
+        "issues": [],
+        "affectedLocations": []
+      },
+      "checks": [
+        {
+          "field": "status",
+          "equals": "awaiting_author"
+        },
+        {
+          "field": "issues",
+          "equals": []
+        },
+        {
+          "field": "affectedLocations",
+          "equals": []
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic",
+        "real-module-offline",
+        "normal"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    },
+    {
+      "id": "real-missing-evidence",
+      "input": {
+        "operation": "audit",
+        "payload": {
+          "bundle": {
+            "claims": [
+              {
+                "id": "synthetic-claim",
+                "kind": "literature_result",
+                "locations": [
+                  "p1"
+                ],
+                "evidence": []
+              }
+            ],
+            "numbers": []
+          },
+          "currentSources": [
+            {
+              "id": "synthetic-source",
+              "version": "v1",
+              "hash": "synthetic-hash",
+              "authorConfirmed": true
+            }
+          ]
+        },
+        "synthetic": true,
+        "needs_review": true,
+        "provenance": "E:/AI/codex/writing-site/src/writing-evidence.mjs",
+        "risk_tags": [
+          "missing-evidence"
+        ]
+      },
+      "expected": {
+        "status": "needs_review",
+        "issues": [
+          {
+            "code": "missing_evidence",
+            "claimId": "synthetic-claim",
+            "locations": [
+              "p1"
+            ],
+            "detail": "保留正文待核验标记"
+          }
+        ],
+        "affectedLocations": [
+          "p1"
+        ]
+      },
+      "checks": [
+        {
+          "field": "status",
+          "equals": "needs_review"
+        },
+        {
+          "field": "issues",
+          "equals": [
+            {
+              "code": "missing_evidence",
+              "claimId": "synthetic-claim",
+              "locations": [
+                "p1"
+              ],
+              "detail": "保留正文待核验标记"
+            }
+          ]
+        },
+        {
+          "field": "affectedLocations",
+          "equals": [
+            "p1"
+          ]
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic",
+        "real-module-offline",
+        "missing-evidence"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    },
+    {
+      "id": "real-stale-hash",
+      "input": {
+        "operation": "audit",
+        "payload": {
+          "bundle": {
+            "claims": [
+              {
+                "id": "synthetic-claim",
+                "kind": "literature_result",
+                "locations": [
+                  "p1"
+                ],
+                "evidence": [
+                  {
+                    "sourceId": "synthetic-source",
+                    "version": "v1",
+                    "hash": "old",
+                    "locator": "synthetic:p1",
+                    "quote": "合成原文"
+                  }
+                ]
+              }
+            ],
+            "numbers": []
+          },
+          "currentSources": [
+            {
+              "id": "synthetic-source",
+              "version": "v1",
+              "hash": "synthetic-hash",
+              "authorConfirmed": true
+            }
+          ]
+        },
+        "synthetic": true,
+        "needs_review": true,
+        "provenance": "E:/AI/codex/writing-site/src/writing-evidence.mjs",
+        "risk_tags": [
+          "stale-hash"
+        ]
+      },
+      "expected": {
+        "status": "needs_review",
+        "issues": [
+          {
+            "code": "stale_source",
+            "claimId": "synthetic-claim",
+            "locations": [
+              "p1"
+            ],
+            "detail": "synthetic-source"
+          }
+        ],
+        "affectedLocations": [
+          "p1"
+        ]
+      },
+      "checks": [
+        {
+          "field": "status",
+          "equals": "needs_review"
+        },
+        {
+          "field": "issues",
+          "equals": [
+            {
+              "code": "stale_source",
+              "claimId": "synthetic-claim",
+              "locations": [
+                "p1"
+              ],
+              "detail": "synthetic-source"
+            }
+          ]
+        },
+        {
+          "field": "affectedLocations",
+          "equals": [
+            "p1"
+          ]
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic",
+        "real-module-offline",
+        "stale-hash"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    },
+    {
+      "id": "real-missing-locator",
+      "input": {
+        "operation": "audit",
+        "payload": {
+          "bundle": {
+            "claims": [
+              {
+                "id": "synthetic-claim",
+                "kind": "literature_result",
+                "locations": [
+                  "p1"
+                ],
+                "evidence": [
+                  {
+                    "sourceId": "synthetic-source",
+                    "version": "v1",
+                    "hash": "synthetic-hash",
+                    "locator": "",
+                    "quote": "合成原文"
+                  }
+                ]
+              }
+            ],
+            "numbers": []
+          },
+          "currentSources": [
+            {
+              "id": "synthetic-source",
+              "version": "v1",
+              "hash": "synthetic-hash",
+              "authorConfirmed": true
+            }
+          ]
+        },
+        "synthetic": true,
+        "needs_review": true,
+        "provenance": "E:/AI/codex/writing-site/src/writing-evidence.mjs",
+        "risk_tags": [
+          "missing-locator"
+        ]
+      },
+      "expected": {
+        "status": "needs_review",
+        "issues": [
+          {
+            "code": "missing_locator",
+            "claimId": "synthetic-claim",
+            "locations": [
+              "p1"
+            ],
+            "detail": "synthetic-source"
+          }
+        ],
+        "affectedLocations": [
+          "p1"
+        ]
+      },
+      "checks": [
+        {
+          "field": "status",
+          "equals": "needs_review"
+        },
+        {
+          "field": "issues",
+          "equals": [
+            {
+              "code": "missing_locator",
+              "claimId": "synthetic-claim",
+              "locations": [
+                "p1"
+              ],
+              "detail": "synthetic-source"
+            }
+          ]
+        },
+        {
+          "field": "affectedLocations",
+          "equals": [
+            "p1"
+          ]
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic",
+        "real-module-offline",
+        "missing-locator"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    },
+    {
+      "id": "real-unconfirmed",
+      "input": {
+        "operation": "audit",
+        "payload": {
+          "bundle": {
+            "claims": [
+              {
+                "id": "synthetic-claim",
+                "kind": "author_result",
+                "locations": [
+                  "p1"
+                ],
+                "evidence": [
+                  {
+                    "sourceId": "synthetic-source",
+                    "version": "v1",
+                    "hash": "synthetic-hash",
+                    "locator": "synthetic:p1",
+                    "quote": "合成原文"
+                  }
+                ]
+              }
+            ],
+            "numbers": []
+          },
+          "currentSources": [
+            {
+              "id": "synthetic-source",
+              "version": "v1",
+              "hash": "synthetic-hash",
+              "authorConfirmed": false
+            }
+          ]
+        },
+        "synthetic": true,
+        "needs_review": true,
+        "provenance": "E:/AI/codex/writing-site/src/writing-evidence.mjs",
+        "risk_tags": [
+          "unconfirmed"
+        ]
+      },
+      "expected": {
+        "status": "needs_review",
+        "issues": [
+          {
+            "code": "unconfirmed_result",
+            "claimId": "synthetic-claim",
+            "locations": [
+              "p1"
+            ],
+            "detail": "synthetic-source"
+          }
+        ],
+        "affectedLocations": [
+          "p1"
+        ]
+      },
+      "checks": [
+        {
+          "field": "status",
+          "equals": "needs_review"
+        },
+        {
+          "field": "issues",
+          "equals": [
+            {
+              "code": "unconfirmed_result",
+              "claimId": "synthetic-claim",
+              "locations": [
+                "p1"
+              ],
+              "detail": "synthetic-source"
+            }
+          ]
+        },
+        {
+          "field": "affectedLocations",
+          "equals": [
+            "p1"
+          ]
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic",
+        "real-module-offline",
+        "unconfirmed"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    },
+    {
+      "id": "real-number-conflict",
+      "input": {
+        "operation": "audit",
+        "payload": {
+          "bundle": {
+            "claims": [],
+            "numbers": [
+              {
+                "metric": "合成率",
+                "value": "12",
+                "unit": "%",
+                "scope": "synthetic",
+                "location": "p1"
+              },
+              {
+                "metric": "合成率",
+                "value": "13",
+                "unit": "%",
+                "scope": "synthetic",
+                "location": "p2"
+              }
+            ]
+          },
+          "currentSources": []
+        },
+        "synthetic": true,
+        "needs_review": true,
+        "provenance": "E:/AI/codex/writing-site/src/writing-evidence.mjs",
+        "risk_tags": [
+          "number-conflict"
+        ]
+      },
+      "expected": {
+        "status": "needs_review",
+        "issues": [
+          {
+            "code": "number_conflict",
+            "locations": [
+              "p1",
+              "p2"
+            ],
+            "metric": "合成率"
+          }
+        ],
+        "affectedLocations": [
+          "p1",
+          "p2"
+        ]
+      },
+      "checks": [
+        {
+          "field": "status",
+          "equals": "needs_review"
+        },
+        {
+          "field": "issues",
+          "equals": [
+            {
+              "code": "number_conflict",
+              "locations": [
+                "p1",
+                "p2"
+              ],
+              "metric": "合成率"
+            }
+          ]
+        },
+        {
+          "field": "affectedLocations",
+          "equals": [
+            "p1",
+            "p2"
+          ]
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic",
+        "real-module-offline",
+        "number-conflict"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    },
+    {
+      "id": "real-target-edit",
+      "input": {
+        "operation": "repair",
+        "payload": {
+          "paragraphs": {
+            "p1": "原方法句",
+            "p2": "未修改背景"
+          },
+          "sourceVersion": "synthetic-v1",
+          "review": {
+            "sourceVersion": "synthetic-v1",
+            "issues": [
+              {
+                "id": "i1",
+                "location": "p1",
+                "quote": "原方法句",
+                "acceptance": "仅改表达",
+                "basis": "合成用户要求"
+              }
+            ]
+          },
+          "edits": [
+            {
+              "issueId": "i1",
+              "location": "p1",
+              "text": "修改后的方法句"
+            }
+          ]
+        },
+        "synthetic": true,
+        "needs_review": true,
+        "provenance": "E:/AI/codex/writing-site/src/writing-evidence.mjs",
+        "risk_tags": [
+          "target-edit"
+        ]
+      },
+      "expected": {
+        "status": "awaiting_author",
+        "paragraphs": {
+          "p1": "修改后的方法句",
+          "p2": "未修改背景"
+        }
+      },
+      "checks": [
+        {
+          "field": "status",
+          "equals": "awaiting_author"
+        },
+        {
+          "field": "paragraphs",
+          "equals": {
+            "p1": "修改后的方法句",
+            "p2": "未修改背景"
+          }
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic",
+        "real-module-offline",
+        "target-edit"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    },
+    {
+      "id": "real-keep-marker",
+      "input": {
+        "operation": "repair",
+        "payload": {
+          "paragraphs": {
+            "p1": "原句【数据待核验：合成】",
+            "p2": "未修改背景"
+          },
+          "sourceVersion": "synthetic-v1",
+          "review": {
+            "sourceVersion": "synthetic-v1",
+            "issues": [
+              {
+                "id": "i1",
+                "location": "p1",
+                "quote": "原句【数据待核验：合成】",
+                "acceptance": "仅改表达",
+                "basis": "合成用户要求"
+              }
+            ]
+          },
+          "edits": [
+            {
+              "issueId": "i1",
+              "location": "p1",
+              "text": "修改句【数据待核验：合成】"
+            }
+          ]
+        },
+        "synthetic": true,
+        "needs_review": true,
+        "provenance": "E:/AI/codex/writing-site/src/writing-evidence.mjs",
+        "risk_tags": [
+          "keep-marker"
+        ]
+      },
+      "expected": {
+        "status": "awaiting_author",
+        "paragraphs": {
+          "p1": "修改句【数据待核验：合成】",
+          "p2": "未修改背景"
+        }
+      },
+      "checks": [
+        {
+          "field": "status",
+          "equals": "awaiting_author"
+        },
+        {
+          "field": "paragraphs",
+          "equals": {
+            "p1": "修改句【数据待核验：合成】",
+            "p2": "未修改背景"
+          }
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic",
+        "real-module-offline",
+        "keep-marker"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    }
+  ]
+}

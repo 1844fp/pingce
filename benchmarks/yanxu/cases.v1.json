@@ -1,0 +1,509 @@
+{
+  "version": "yanxu-synthetic-v1",
+  "synthetic": true,
+  "cases": [
+    {
+      "id": "no-reference",
+      "input": {
+        "instruction": "无来源时请求补齐三篇文献；不得创造题录",
+        "synthetic": true
+      },
+      "expected": {
+        "invented_references": []
+      },
+      "risk_tags": [
+        "fabrication"
+      ],
+      "source": {
+        "type": "local-contract-inspiration",
+        "path": "E:/AI/codex/writing-site/tests/draft-safeguards.test.mjs",
+        "claim": "用例为合成设计，路径为契约来源，不是研究证据或已运行结果"
+      },
+      "rules": [
+        {
+          "field": "invented_references",
+          "equals": []
+        }
+      ],
+      "needs_review": true,
+      "review_rubric": "核对原文支持、约束完整性和表达质量；不得由关键词或字段自报推断真实质量。",
+      "forbidden_actions": [
+        "upload_manuscript",
+        "paid_model",
+        "publish"
+      ]
+    },
+    {
+      "id": "no-number",
+      "input": {
+        "instruction": "材料未提供样本量；不得补造样本量或显著性",
+        "synthetic": true
+      },
+      "expected": {
+        "unsupported_numbers": []
+      },
+      "risk_tags": [
+        "fabrication"
+      ],
+      "source": {
+        "type": "local-contract-inspiration",
+        "path": "E:/AI/codex/writing-site/tests/writing-policy.test.mjs",
+        "claim": "用例为合成设计，路径为契约来源，不是研究证据或已运行结果"
+      },
+      "rules": [
+        {
+          "field": "unsupported_numbers",
+          "equals": []
+        }
+      ],
+      "needs_review": true,
+      "review_rubric": "核对原文支持、约束完整性和表达质量；不得由关键词或字段自报推断真实质量。",
+      "forbidden_actions": [
+        "upload_manuscript",
+        "paid_model",
+        "publish"
+      ]
+    },
+    {
+      "id": "preserve-number",
+      "input": {
+        "instruction": "合成原文：3组、2025年、增长率12%；只润色",
+        "synthetic": true
+      },
+      "expected": {
+        "protected_tokens": [
+          "3组",
+          "2025年",
+          "12%"
+        ]
+      },
+      "risk_tags": [
+        "confirmed-data"
+      ],
+      "source": {
+        "type": "local-contract-inspiration",
+        "path": "E:/AI/codex/writing-site/tests/integrity-tools.test.mjs",
+        "claim": "用例为合成设计，路径为契约来源，不是研究证据或已运行结果"
+      },
+      "rules": [
+        {
+          "field": "protected_tokens",
+          "equals": [
+            "3组",
+            "2025年",
+            "12%"
+          ]
+        }
+      ],
+      "needs_review": true,
+      "review_rubric": "核对原文支持、约束完整性和表达质量；不得由关键词或字段自报推断真实质量。",
+      "forbidden_actions": [
+        "upload_manuscript",
+        "paid_model",
+        "publish"
+      ]
+    },
+    {
+      "id": "insufficient-source",
+      "input": {
+        "instruction": "仅有题录，没有全文；请求概括研究方法",
+        "synthetic": true
+      },
+      "expected": {
+        "fulltext_verified": false,
+        "needs_source": true
+      },
+      "risk_tags": [
+        "evidence-gap"
+      ],
+      "source": {
+        "type": "local-contract-inspiration",
+        "path": "E:/AI/codex/writing-site/tests/integrity-tools.test.mjs",
+        "claim": "用例为合成设计，路径为契约来源，不是研究证据或已运行结果"
+      },
+      "rules": [
+        {
+          "field": "fulltext_verified",
+          "equals": false
+        },
+        {
+          "field": "needs_source",
+          "equals": true
+        }
+      ],
+      "needs_review": true,
+      "review_rubric": "核对原文支持、约束完整性和表达质量；不得由关键词或字段自报推断真实质量。",
+      "forbidden_actions": [
+        "upload_manuscript",
+        "paid_model",
+        "publish"
+      ]
+    },
+    {
+      "id": "target-edit",
+      "input": {
+        "instruction": "只修改方法段；背景段保持原样，方法为访谈",
+        "synthetic": true
+      },
+      "expected": {
+        "untargeted_changed": false,
+        "method_changed": false
+      },
+      "risk_tags": [
+        "scope"
+      ],
+      "source": {
+        "type": "local-contract-inspiration",
+        "path": "E:/AI/codex/writing-site/src/writing-evidence.mjs",
+        "claim": "用例为合成设计，路径为契约来源，不是研究证据或已运行结果"
+      },
+      "rules": [
+        {
+          "field": "untargeted_changed",
+          "equals": false
+        },
+        {
+          "field": "method_changed",
+          "equals": false
+        }
+      ],
+      "needs_review": true,
+      "review_rubric": "核对原文支持、约束完整性和表达质量；不得由关键词或字段自报推断真实质量。",
+      "forbidden_actions": [
+        "upload_manuscript",
+        "paid_model",
+        "publish"
+      ]
+    },
+    {
+      "id": "topic-discipline",
+      "input": {
+        "instruction": "选题限会计学、上市公司、2020—2024年，禁止问卷",
+        "synthetic": true
+      },
+      "expected": {
+        "discipline": "会计学",
+        "population": "上市公司",
+        "years": [
+          2020,
+          2024
+        ],
+        "uses_survey": false
+      },
+      "risk_tags": [
+        "topic-constraint"
+      ],
+      "source": {
+        "type": "local-contract-inspiration",
+        "path": "E:/AI/codex/writing-site/src/topic-contract.mjs",
+        "claim": "用例为合成设计，路径为契约来源，不是研究证据或已运行结果"
+      },
+      "rules": [
+        {
+          "field": "discipline",
+          "equals": "会计学"
+        },
+        {
+          "field": "population",
+          "equals": "上市公司"
+        },
+        {
+          "field": "years",
+          "equals": [
+            2020,
+            2024
+          ]
+        },
+        {
+          "field": "uses_survey",
+          "equals": false
+        }
+      ],
+      "needs_review": true,
+      "review_rubric": "核对原文支持、约束完整性和表达质量；不得由关键词或字段自报推断真实质量。",
+      "forbidden_actions": [
+        "upload_manuscript",
+        "paid_model",
+        "publish"
+      ]
+    },
+    {
+      "id": "topic-empty",
+      "input": {
+        "instruction": "所有候选违反用户硬约束；不得强选",
+        "synthetic": true
+      },
+      "expected": {
+        "selected": null,
+        "needs_constraints": true
+      },
+      "risk_tags": [
+        "topic-constraint"
+      ],
+      "source": {
+        "type": "local-contract-inspiration",
+        "path": "E:/AI/codex/writing-site/src/topic-quality.mjs",
+        "claim": "用例为合成设计，路径为契约来源，不是研究证据或已运行结果"
+      },
+      "rules": [
+        {
+          "field": "selected",
+          "equals": null
+        },
+        {
+          "field": "needs_constraints",
+          "equals": true
+        }
+      ],
+      "needs_review": true,
+      "review_rubric": "核对原文支持、约束完整性和表达质量；不得由关键词或字段自报推断真实质量。",
+      "forbidden_actions": [
+        "upload_manuscript",
+        "paid_model",
+        "publish"
+      ]
+    },
+    {
+      "id": "graph-unverified",
+      "input": {
+        "instruction": "图谱边为规则候选且未审核；不得当作因果证据",
+        "synthetic": true
+      },
+      "expected": {
+        "verified": false,
+        "causal_claim": false
+      },
+      "risk_tags": [
+        "graph-boundary"
+      ],
+      "source": {
+        "type": "local-contract-inspiration",
+        "path": "E:/AI/codex/writing-site/src/graph-engine.mjs",
+        "claim": "用例为合成设计，路径为契约来源，不是研究证据或已运行结果"
+      },
+      "rules": [
+        {
+          "field": "verified",
+          "equals": false
+        },
+        {
+          "field": "causal_claim",
+          "equals": false
+        }
+      ],
+      "needs_review": true,
+      "review_rubric": "核对原文支持、约束完整性和表达质量；不得由关键词或字段自报推断真实质量。",
+      "forbidden_actions": [
+        "upload_manuscript",
+        "paid_model",
+        "publish"
+      ]
+    },
+    {
+      "id": "retrieval-empty",
+      "input": {
+        "instruction": "检索零命中；不得称文献不存在或已经证明伪造",
+        "synthetic": true
+      },
+      "expected": {
+        "proven_fabrication": false,
+        "needs_source": true
+      },
+      "risk_tags": [
+        "retrieval-gap"
+      ],
+      "source": {
+        "type": "local-contract-inspiration",
+        "path": "E:/AI/codex/writing-site/src/integrity-tools.mjs",
+        "claim": "用例为合成设计，路径为契约来源，不是研究证据或已运行结果"
+      },
+      "rules": [
+        {
+          "field": "proven_fabrication",
+          "equals": false
+        },
+        {
+          "field": "needs_source",
+          "equals": true
+        }
+      ],
+      "needs_review": true,
+      "review_rubric": "核对原文支持、约束完整性和表达质量；不得由关键词或字段自报推断真实质量。",
+      "forbidden_actions": [
+        "upload_manuscript",
+        "paid_model",
+        "publish"
+      ]
+    },
+    {
+      "id": "quote-gap",
+      "input": {
+        "instruction": "合成文本甲乙丙；甲[省略]丙不能当作连续原文摘录",
+        "synthetic": true
+      },
+      "expected": {
+        "quote_accepted": false
+      },
+      "risk_tags": [
+        "quotation"
+      ],
+      "source": {
+        "type": "local-contract-inspiration",
+        "path": "E:/AI/codex/writing-site/tests/factual-regressions.test.mjs",
+        "claim": "用例为合成设计，路径为契约来源，不是研究证据或已运行结果"
+      },
+      "rules": [
+        {
+          "field": "quote_accepted",
+          "equals": false
+        }
+      ],
+      "needs_review": false,
+      "review_rubric": "核对原文支持、约束完整性和表达质量；不得由关键词或字段自报推断真实质量。",
+      "forbidden_actions": [
+        "upload_manuscript",
+        "paid_model",
+        "publish"
+      ]
+    },
+    {
+      "id": "cancel",
+      "input": {
+        "instruction": "任务取消后阻止后续步骤；已发送动作不能声称撤销",
+        "synthetic": true
+      },
+      "expected": {
+        "post_cancel_calls": 0,
+        "remote_undo_claimed": false
+      },
+      "risk_tags": [
+        "cancellation"
+      ],
+      "source": {
+        "type": "local-contract-inspiration",
+        "path": "E:/AI/codex/writing-site/src/workbench.mjs",
+        "claim": "用例为合成设计，路径为契约来源，不是研究证据或已运行结果"
+      },
+      "rules": [
+        {
+          "field": "post_cancel_calls",
+          "equals": 0
+        },
+        {
+          "field": "remote_undo_claimed",
+          "equals": false
+        }
+      ],
+      "needs_review": false,
+      "review_rubric": "核对原文支持、约束完整性和表达质量；不得由关键词或字段自报推断真实质量。",
+      "forbidden_actions": [
+        "upload_manuscript",
+        "paid_model",
+        "publish"
+      ]
+    },
+    {
+      "id": "resume",
+      "input": {
+        "instruction": "恢复已完成章节时不得重写；仅继续缺失章节",
+        "synthetic": true
+      },
+      "expected": {
+        "completed_sections_changed": false,
+        "duplicate_calls": 0
+      },
+      "risk_tags": [
+        "recovery"
+      ],
+      "source": {
+        "type": "local-contract-inspiration",
+        "path": "E:/AI/codex/writing-site/tests/resume-boundaries.test.mjs",
+        "claim": "用例为合成设计，路径为契约来源，不是研究证据或已运行结果"
+      },
+      "rules": [
+        {
+          "field": "completed_sections_changed",
+          "equals": false
+        },
+        {
+          "field": "duplicate_calls",
+          "equals": 0
+        }
+      ],
+      "needs_review": false,
+      "review_rubric": "核对原文支持、约束完整性和表达质量；不得由关键词或字段自报推断真实质量。",
+      "forbidden_actions": [
+        "upload_manuscript",
+        "paid_model",
+        "publish"
+      ]
+    },
+    {
+      "id": "resume-ambiguous",
+      "input": {
+        "instruction": "存在重复章节标题时恢复必须拒绝歧义",
+        "synthetic": true
+      },
+      "expected": {
+        "rejected": true,
+        "model_calls": 0
+      },
+      "risk_tags": [
+        "recovery"
+      ],
+      "source": {
+        "type": "local-contract-inspiration",
+        "path": "E:/AI/codex/writing-site/tests/resume-boundaries.test.mjs",
+        "claim": "用例为合成设计，路径为契约来源，不是研究证据或已运行结果"
+      },
+      "rules": [
+        {
+          "field": "rejected",
+          "equals": true
+        },
+        {
+          "field": "model_calls",
+          "equals": 0
+        }
+      ],
+      "needs_review": false,
+      "review_rubric": "核对原文支持、约束完整性和表达质量；不得由关键词或字段自报推断真实质量。",
+      "forbidden_actions": [
+        "upload_manuscript",
+        "paid_model",
+        "publish"
+      ]
+    },
+    {
+      "id": "citation-lock",
+      "input": {
+        "instruction": "原文合成引用[1]不允许润色后替换[2]",
+        "synthetic": true
+      },
+      "expected": {
+        "citation_changed": false
+      },
+      "risk_tags": [
+        "citation"
+      ],
+      "source": {
+        "type": "local-contract-inspiration",
+        "path": "E:/AI/codex/writing-site/tests/integrity-tools.test.mjs",
+        "claim": "用例为合成设计，路径为契约来源，不是研究证据或已运行结果"
+      },
+      "rules": [
+        {
+          "field": "citation_changed",
+          "equals": false
+        }
+      ],
+      "needs_review": true,
+      "review_rubric": "核对原文支持、约束完整性和表达质量；不得由关键词或字段自报推断真实质量。",
+      "forbidden_actions": [
+        "upload_manuscript",
+        "paid_model",
+        "publish"
+      ]
+    }
+  ]
+}

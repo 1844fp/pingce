@@ -1,0 +1,49 @@
+# syntax checked separately; invoke from repository root with -f.
+name: evaluation-local
+x-common: &common
+  image: evaluation-local:dev
+  build:
+    context: ../..
+    dockerfile: infra/containers/Dockerfile
+  environment:
+    EVAL_DB: /data/evaluation.db
+    EVAL_ARTIFACT_ROOT: /data/artifacts
+    EVAL_AUTH_CONFIG: ${EVAL_AUTH_CONFIG:-}
+    EVAL_ALLOWED_HOSTS: ${EVAL_ALLOWED_HOSTS:-}
+  volumes:
+    - evaluation-data:/data
+  init: true
+  restart: "no"
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  read_only: true
+  tmpfs: [/tmp]
+services:
+  api:
+    <<: *common
+    profiles: [fixture, http]
+    ports: ["127.0.0.1:8765:8765"]
+    healthcheck:
+      test: [CMD, python, /app/healthcheck.py, api]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+  worker:
+    <<: *common
+    profiles: [fixture, http]
+    command: [python, -m, apps.api.worker]
+    depends_on:
+      api:
+        condition: service_healthy
+    deploy:
+      replicas: 1
+    healthcheck:
+      test: [CMD, python, /app/healthcheck.py, worker]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+volumes:
+  evaluation-data:
+

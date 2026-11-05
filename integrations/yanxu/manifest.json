@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "version": "offline-v1",
+  "mode": "real_module_offline",
+  "files": {
+    "writing-evidence.mjs": "1e7d15b1f026998c6ebcc37714008c6536cce1a80f00a1b73380e4ece93fd425",
+    "workflow.mjs": "65933f88f178d7b81dd05eaeedd455039f039770027c336247e16e2c64a79f51",
+    "research-audit.mjs": "cd2a79a53d409488f5f12934fd82f6d835cc6ca20363f83173d7d2574c6cf2fb",
+    "adapter.mjs": "cc6c01d2fc5710b962763a969353fe9cfb74bbd551ce8db436892dec2e090429",
+    "adapter.py": "e2fca4e7ca8d592809d66e4b58a13d5d5da6ebc21b43fdf24e4e952cf398a2b9"
+  }
+}

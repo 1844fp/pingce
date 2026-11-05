@@ -1,0 +1,81 @@
+{
+  "name": "研序真实离线模块合成输入v1",
+  "snapshot": "yanxu-module-v1",
+  "cases": [
+    {
+      "id": "module-empty",
+      "input": {
+        "operation": "audit",
+        "payload": {
+          "bundle": {
+            "claims": [],
+            "numbers": []
+          },
+          "currentSources": []
+        },
+        "needs_review": true,
+        "synthetic": true
+      },
+      "expected": {
+        "status": "awaiting_author"
+      },
+      "evaluation": "yanxu-writing-v1",
+      "checks": [
+        {
+          "field": "status",
+          "equals": "awaiting_author"
+        }
+      ],
+      "tags": [
+        "synthetic",
+        "real-module-offline"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    },
+    {
+      "id": "module-missing",
+      "input": {
+        "operation": "audit",
+        "payload": {
+          "bundle": {
+            "claims": [
+              {
+                "id": "synth-claim",
+                "kind": "literature_result",
+                "locations": [
+                  "p1"
+                ],
+                "evidence": []
+              }
+            ],
+            "numbers": []
+          },
+          "currentSources": []
+        },
+        "needs_review": true,
+        "synthetic": true
+      },
+      "expected": {
+        "status": "needs_review"
+      },
+      "evaluation": "yanxu-writing-v1",
+      "checks": [
+        {
+          "field": "status",
+          "equals": "needs_review"
+        }
+      ],
+      "tags": [
+        "synthetic",
+        "real-module-offline"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    }
+  ]
+}

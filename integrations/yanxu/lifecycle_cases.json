@@ -1,0 +1,1 @@
+[{"id":"references_empty","input":{"operation":"references_empty"},"expected_checks":{"no_model":true,"search_once":true,"completed":true,"records_expected":true,"lifecycle_expected":true}},{"id":"resume_success","input":{"operation":"resume_success"},"expected_checks":{"no_model":true,"search_once":true,"completed":true,"records_expected":true,"lifecycle_expected":true}}]

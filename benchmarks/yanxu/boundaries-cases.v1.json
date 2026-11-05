@@ -1,0 +1,122 @@
+{
+  "name": "研序选题与取消边界v1",
+  "snapshot": "yanxu-boundaries-v1",
+  "cases": [
+    {
+      "id": "boundaries-topic_constraints",
+      "input": {
+        "operation": "topic_constraints"
+      },
+      "expected": {
+        "scenario": "topic_constraints",
+        "rejected": [
+          {
+            "id": "deadline",
+            "reasons": [
+              "deadline"
+            ]
+          },
+          {
+            "id": "method",
+            "reasons": [
+              "method"
+            ]
+          }
+        ],
+        "handoff_error": "data unavailable: revise constraints and regenerate",
+        "quality_status": "needs_scope"
+      },
+      "checks": [
+        {
+          "field": "scenario",
+          "equals": "topic_constraints"
+        },
+        {
+          "field": "rejected",
+          "equals": [
+            {
+              "id": "deadline",
+              "reasons": [
+                "deadline"
+              ]
+            },
+            {
+              "id": "method",
+              "reasons": [
+                "method"
+              ]
+            }
+          ]
+        },
+        {
+          "field": "handoff_error",
+          "equals": "data unavailable: revise constraints and regenerate"
+        },
+        {
+          "field": "quality_status",
+          "equals": "needs_scope"
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic-dependencies",
+        "real-modules",
+        "topic_constraints"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    },
+    {
+      "id": "boundaries-runtime_cancel",
+      "input": {
+        "operation": "runtime_cancel"
+      },
+      "expected": {
+        "scenario": "runtime_cancel",
+        "cancel_http_status": 200,
+        "job_status": "cancelled",
+        "run_status": "interrupted",
+        "output_present": false,
+        "fetch_calls": 1
+      },
+      "checks": [
+        {
+          "field": "scenario",
+          "equals": "runtime_cancel"
+        },
+        {
+          "field": "cancel_http_status",
+          "equals": 200
+        },
+        {
+          "field": "job_status",
+          "equals": "cancelled"
+        },
+        {
+          "field": "run_status",
+          "equals": "interrupted"
+        },
+        {
+          "field": "output_present",
+          "equals": false
+        },
+        {
+          "field": "fetch_calls",
+          "equals": 1
+        }
+      ],
+      "evaluation": "yanxu-writing-v1",
+      "tags": [
+        "synthetic-dependencies",
+        "real-modules",
+        "runtime_cancel"
+      ],
+      "forbidden_actions": [
+        "paid_model",
+        "upload_manuscript"
+      ]
+    }
+  ]
+}
