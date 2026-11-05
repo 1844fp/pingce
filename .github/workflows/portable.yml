@@ -1,0 +1,35 @@
+name: Portable platform checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  platform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-dev.txt
+      - name: Platform-only tests (external writing project intentionally excluded)
+        run: >-
+          python -m pytest -q -p no:cacheprovider
+          tests/test_access.py tests/test_artifact_api.py tests/test_artifact_store.py
+          tests/test_audit.py tests/test_backup_database.py tests/test_ci_gate.py
+          tests/test_container_contract.py tests/test_doctor.py tests/test_evaluator_comparison.py
+          tests/test_execution_lifecycle.py tests/test_http.py tests/test_local_bundle.py
+          tests/test_migrations.py tests/test_platform.py tests/test_postgres_contract.py
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - run: npm ci
+      - run: npm run build
